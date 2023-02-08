@@ -1,0 +1,40 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+button {
+  background-color: #029A48;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.input-group {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 2rem;
+}
+
+.input-group input {
+  border-radius: 5px;
+  width: 30rem;
+  font-size: large;
+}
+
+.task-list {
+  padding: 0 20%;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
