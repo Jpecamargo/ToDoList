@@ -65,7 +65,7 @@ function App() {
             Tarefas Criadas <span>{count}</span>
           </p>
           <p id="concluded-tasks">
-            Concluídas <span>{countDone}</span>
+            Concluídas <span>{countDone} de {count}</span>
           </p>
         </div>
       </header>
