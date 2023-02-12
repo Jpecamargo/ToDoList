@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Card from "./components/Card";
@@ -6,14 +6,38 @@ import Card from "./components/Card";
 function App() {
   const [input, setInput] = useState<string>();
   const [toDoList, setToDoList] = useState<any>([]);
-  console.log(toDoList);
+  const [countDone, setCountDone] = useState<number>(0);
+  const [count, setCount] = useState<number>(0);
+
+  useEffect(() => {
+    setCount(toDoList.length);
+    setCountDone(toDoList.filter((item: any) => item.done === true).length);
+  }, [toDoList]);
+
+  const handleDelete = (id: number) => {
+    setToDoList(toDoList.filter((item: any) => item.id !== id));
+  };
+
+  const handleChange = (id: number) => {
+    setToDoList(
+      toDoList.map((item: any) => {
+        if (item.id === id) {
+          item.done = !item.done;
+        }
+        return item;
+      })
+    );
+  };
 
   return (
     <div className="App">
       <header>
-        <h1>UniToDo</h1>
+        <div className="black-bg-unitodo">
+          <h1 id="main-text">uniToDo</h1>
+        </div>
         <div className="input-group">
           <input
+            placeholder="Adicione uma tarefa"
             type="text"
             value={input}
             onChange={(e) => {
@@ -22,17 +46,42 @@ function App() {
           />
           <button
             onClick={() => {
-              setToDoList([...toDoList, input]);
+              setToDoList([
+                ...toDoList,
+                {
+                  id: count,
+                  task: input,
+                  done: false,
+                },
+              ]);
               setInput("");
             }}
           >
             Criar
           </button>
         </div>
+        <div className="created-concluded">
+          <p id="created-tasks">
+            Tarefas Criadas <span>{count}</span>
+          </p>
+          <p id="concluded-tasks">
+            Concluídas <span>{countDone}</span>
+          </p>
+        </div>
       </header>
       <div className="task-list">
-        {toDoList.map((item: string) => (
-          <Card task={item} />
+        {toDoList.map((item: { id: number; task: string; done: boolean }) => (
+          <Card
+            key={item.id}
+            task={item.task}
+            isChecked={item.done}
+            onCheck={() => {
+              handleChange(item.id);
+            }}
+            onDelete={() => {
+              handleDelete(item.id);
+            }}
+          />
         ))}
       </div>
     </div>

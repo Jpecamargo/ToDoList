@@ -1,10 +1,3 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
-
 button {
   background-color: #029A48;
 }
@@ -27,14 +20,69 @@ button {
   border-radius: 5px;
   width: 30rem;
   font-size: large;
+  align-items: center;
+  width: 638px;
+  height: 54px;
+  margin-top: -20px;
+}
+
+.input-group button {
+  margin-top: -20px;
 }
 
 .task-list {
   padding: 0 20%;
+  color: white;
 }
 
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.black-bg-unitodo {
+  height: 200px;
+  width: 100%;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  padding: 0;
+  background: #0D0D0D;
+} 
+
+
+#main-text {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 48px;
+  position: absolute;
+  height: 48px;
+  left: calc(50% - 164px/2);
+  top: 72px;
+
+  background: -webkit-linear-gradient(60deg,#16B660, #009467);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.created-concluded {
+  display:flex;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #16B660;
+}
+
+#created-tasks {
+  padding-right: 36rem;
+}
+
+.created-concluded span {
+  background-color: rgb(49, 49, 49);
+  padding: .1rem .5rem;
+  border-radius: 7px;
+  color: white;
 }
