@@ -8,6 +8,8 @@ function App() {
   const [toDoList, setToDoList] = useState<any>([]);
   const [countDone, setCountDone] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
+  const toDoListDone = toDoList.filter((item: any) => item.done === true)
+  const toDoListNotDone = toDoList.filter((item: any) => item.done === false)
 
   useEffect(() => {
     setCount(toDoList.length);
@@ -70,7 +72,20 @@ function App() {
         </div>
       </header>
       <div className="task-list">
-        {toDoList.map((item: { id: number; task: string; done: boolean }) => (
+        {toDoListNotDone.map((item: { id: number; task: string; done: boolean }) => (
+          <Card
+            key={item.id}
+            task={item.task}
+            isChecked={item.done}
+            onCheck={() => {
+              handleChange(item.id);
+            }}
+            onDelete={() => {
+              handleDelete(item.id);
+            }}
+          />
+        ))}
+        {toDoListDone.map((item: { id: number; task: string; done: boolean }) => (
           <Card
             key={item.id}
             task={item.task}
