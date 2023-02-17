@@ -4,23 +4,23 @@ import "./App.css";
 import Card from "./components/Card";
 
 function App() {
-  const [input, setInput] = useState<string>();
+  const [input, setInput] = useState<string>("");
   const [toDoList, setToDoList] = useState<any>([]);
   const [countDone, setCountDone] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
-  const toDoListDone = toDoList.filter((item: any) => item.done === true)
-  const toDoListNotDone = toDoList.filter((item: any) => item.done === false)
+  const doneToDo = toDoList.filter((item: any) => item.done === true)
+  const notDoneToDo = toDoList.filter((item: any) => item.done === false)
 
   useEffect(() => {
     setCount(toDoList.length);
     setCountDone(toDoList.filter((item: any) => item.done === true).length);
   }, [toDoList]);
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     setToDoList(toDoList.filter((item: any) => item.id !== id));
   };
 
-  const handleChange = (id: number) => {
+  const handleChange = (id: string) => {
     setToDoList(
       toDoList.map((item: any) => {
         if (item.id === id) {
@@ -51,7 +51,7 @@ function App() {
               setToDoList([
                 ...toDoList,
                 {
-                  id: count,
+                  id: Math.random().toString(16).slice(2),
                   task: input,
                   done: false,
                 },
@@ -67,37 +67,50 @@ function App() {
             Tarefas Criadas <span>{count}</span>
           </p>
           <p id="concluded-tasks">
-            Concluídas <span>{countDone} de {count}</span>
+            Concluídas{" "}
+            <span>
+              {countDone} de {count}
+            </span>
           </p>
         </div>
       </header>
       <div className="task-list">
-        {toDoListNotDone.map((item: { id: number; task: string; done: boolean }) => (
-          <Card
-            key={item.id}
-            task={item.task}
-            isChecked={item.done}
-            onCheck={() => {
-              handleChange(item.id);
-            }}
-            onDelete={() => {
-              handleDelete(item.id);
-            }}
-          />
-        ))}
-        {toDoListDone.map((item: { id: number; task: string; done: boolean }) => (
-          <Card
-            key={item.id}
-            task={item.task}
-            isChecked={item.done}
-            onCheck={() => {
-              handleChange(item.id);
-            }}
-            onDelete={() => {
-              handleDelete(item.id);
-            }}
-          />
-        ))}
+        {notDoneToDo.map(
+          (
+            item: { id: string; task: string; done: boolean },
+            index: number
+            ) => (
+              <Card
+              key={index}
+              task={item.task}
+              isChecked={item.done}
+              onCheck={() => {
+                handleChange(item.id);
+              }}
+              onDelete={() => {
+                handleDelete(item.id);
+              }}
+              />
+              )
+              )}
+              {doneToDo.map(
+                (
+                  item: { id: string; task: string; done: boolean },
+                  index: number
+                ) => (
+                  <Card
+                    key={index}
+                    task={item.task}
+                    isChecked={item.done}
+                    onCheck={() => {
+                      handleChange(item.id);
+                    }}
+                    onDelete={() => {
+                      handleDelete(item.id);
+                    }}
+                  />
+                )
+              )}
       </div>
     </div>
   );
