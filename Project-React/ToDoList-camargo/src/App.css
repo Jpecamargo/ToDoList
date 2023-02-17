@@ -1,0 +1,111 @@
+button {
+  background-color: #029A48;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.input-group {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 2rem;
+}
+
+.input-group input {
+  border-radius: 5px;
+  width: 30rem;
+  font-size: large;
+  align-items: center;
+  width: 638px;
+  height: 54px;
+  margin-top: 11rem;
+  background-color: #242424;
+  color: white;
+}
+
+.input-group button {
+  margin-top: 11rem;
+}
+
+.task-list {
+  padding: 0 20%;
+  color: white;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .black-bg-unitodo {
+  height: 200px;
+  width: 100%;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  padding: 0;
+}  */
+
+
+#main-text {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 48px;
+  position: absolute;
+  height: 48px;
+  left: calc(50% - 164px/2);
+  top: 72px;
+
+  background: -webkit-linear-gradient(60deg,#16B660, #009467);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.created-concluded {
+  display:flex;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #16B660;
+}
+
+#created-tasks {
+  padding-right: 36rem;
+}
+
+.created-concluded span {
+  background-color: rgb(49, 49, 49);
+  padding: .1rem .5rem;
+  border-radius: 7px;
+  color: white;
+}
+
+
+.light-mode {
+  background-color: #fff;
+  color: #333;
+  height: 15rem;
+}
+
+
+.dark-mode {
+  background-color: black;
+  color: #fff;
+  height: 15rem;
+}
+
+.sun-moon-button {
+  margin-left: 30rem;
+  margin-top: 20px;
+}
+
+
+
